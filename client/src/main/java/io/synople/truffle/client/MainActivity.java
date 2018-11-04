@@ -1,4 +1,5 @@
 package io.synople.truffle.client;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         RecyclerView recyclerView = findViewById(R.id.rvID);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -24,6 +26,17 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         tickets.add(new Ticket());
+        tickets.add(new Ticket());
+        tickets.add(new Ticket());
+        tickets.add(new Ticket());
+        tickets.add(new Ticket());
+        tickets.add(new Ticket());
+        tickets.add(new Ticket());
+        tickets.add(new Ticket());
+
+
+
+
         adapter.notifyDataSetChanged();
     }
 
@@ -35,10 +48,20 @@ public class MainActivity extends AppCompatActivity {
         // you provide access to all the views for a data item in a view holder
         public class MyViewHolder extends RecyclerView.ViewHolder {
             // each data item is just a string in this case
-            public TextView mTextView;
-            public MyViewHolder(TextView v) {
+            public TextView mTextView01;
+            public TextView mTextView02;
+            public TextView mTextView03;
+            public TextView mTextView04;
+
+            public MyViewHolder(TextView v, TextView w, TextView x, TextView y) {
                 super(v);
-                mTextView = v;
+                mTextView01 = v;
+
+                mTextView02 = w;
+
+                mTextView03 = x;
+
+                mTextView04 = y;
             }
         }
 
@@ -52,11 +75,20 @@ public class MainActivity extends AppCompatActivity {
         public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
                                                          int viewType) {
             // create a new view
-            TextView v = (TextView) LayoutInflater.from(parent.getContext())
+            ConstraintLayout v = (ConstraintLayout) LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.list_item_ticket, parent, false);
 
-            MyViewHolder vh = new MyViewHolder(v);
-            return vh;
+//            return new MyViewHolder(
+//                    findViewById(R.id.tvRestaurantNameID), (TextView) v.findViewById(R.id.tvItemID),
+//                    (TextView) v.findViewById(R.id.tvCostID), (TextView) v.findViewById(R.id.tvDateID));
+//
+
+            return new MyViewHolder(
+                    (TextView) v.findViewById(R.id.tvRestaurantNameID), (TextView) v.findViewById(R.id.tvItemID),
+                    (TextView) v.findViewById(R.id.tvCostID), (TextView) v.findViewById(R.id.tvDateID));
+
+
+
         }
 
         // Replace the contents of a view (invoked by the layout manager)
@@ -64,7 +96,10 @@ public class MainActivity extends AppCompatActivity {
         public void onBindViewHolder(MyViewHolder holder, int position) {
             // - get element from your dataset at this position
             // - replace the contents of the view with that element
-            holder.mTextView.setText(tickets.get(position).toString());
+            holder.mTextView01.setText(tickets.get(position).toString());
+            holder.mTextView02.setText(tickets.get(position).toString());
+            holder.mTextView03.setText(tickets.get(position).toString());
+            holder.mTextView04.setText(tickets.get(position).toString());
 
         }
 
