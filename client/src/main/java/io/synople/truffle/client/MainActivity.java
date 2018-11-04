@@ -1,12 +1,14 @@
 package io.synople.truffle.client;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import io.synople.truffle.common.model.Ticket;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,6 +16,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        RecyclerView recyclerView = findViewById(R.id.rvID);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        List<Ticket> tickets = new ArrayList<>();
+        MyAdapter adapter = new MyAdapter(tickets);
+        recyclerView.setAdapter(adapter);
+
+        tickets.add(new Ticket());
+        adapter.notifyDataSetChanged();
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
@@ -53,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         public void onBindViewHolder(MyViewHolder holder, int position) {
             // - get element from your dataset at this position
             // - replace the contents of the view with that element
-            holder.mTextView.setText(tickets.indexOf(position));
+            holder.mTextView.setText(tickets.get(position).toString());
 
         }
 

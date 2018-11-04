@@ -6,12 +6,12 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/ivPhoto"
         android:layout_width="369dp"
         android:layout_height="229dp"
         android:src="@mipmap/ic_launcher"
-        android:layout_below="@+id/ItemID"
-        android:layout_toStartOf="@+id/DateID"
+        android:layout_below="@+id/tvItemID"
+        android:layout_toStartOf="@+id/tvDateID"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
@@ -24,7 +24,7 @@
         app:layout_constraintVertical_bias="0.025" />
 
     <TextView
-        android:id="@+id/RestaurantNameID"
+        android:id="@+id/tvRestaurantNameID"
         android:layout_height="33dp"
         android:layout_width="167dp"
         android:text="Restaurant Name"
@@ -39,11 +39,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/ivPhoto"
         app:layout_constraintVertical_bias="0.055" />
 
     <TextView
-        android:id="@+id/ItemID"
+        android:id="@+id/tvItemID"
         android:text="Items Purchased"
         android:layout_height="33dp"
         android:layout_width="167dp"
@@ -54,10 +54,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RestaurantNameID" />
+        app:layout_constraintTop_toBottomOf="@+id/tvRestaurantNameID" />
 
     <TextView
-        android:id="@+id/CostID"
+        android:id="@+id/tvCostID"
         android:layout_height="33dp"
         android:layout_width="167dp"
         android:text="Total Cost"
@@ -71,15 +71,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ItemID"
+        app:layout_constraintTop_toBottomOf="@+id/tvItemID"
         app:layout_constraintVertical_bias="0.068" />
 
     <TextView
-        android:id="@+id/DateID"
+        android:id="@+id/tvDateID"
         android:layout_height="33dp"
         android:layout_width="167dp"
         android:text="Date of Purchase"
-        android:layout_alignEnd="@+id/CostID"
+        android:layout_alignEnd="@+id/tvCostID"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -89,7 +89,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CostID"
+        app:layout_constraintTop_toBottomOf="@+id/tvCostID"
         app:layout_constraintVertical_bias="0.104" />
 
 </android.support.constraint.ConstraintLayout>
