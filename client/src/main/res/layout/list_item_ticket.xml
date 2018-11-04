@@ -6,90 +6,44 @@
 
 
     <ImageView
-        android:id="@+id/ivPhoto"
-        android:layout_width="369dp"
-        android:layout_height="229dp"
-        android:src="@mipmap/ic_launcher"
-        android:layout_below="@+id/tvItemID"
-        android:layout_toStartOf="@+id/tvDateID"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.025" />
+            android:id="@+id/ivPhoto"
+            android:layout_width="175dp"
+            android:layout_height="229dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+    />
 
     <TextView
-        android:id="@+id/tvRestaurantNameID"
-        android:layout_height="33dp"
-        android:layout_width="167dp"
-        android:text="Restaurant Name"
-        android:layout_alignParentEnd="true"
+            android:id="@+id/tvVendor"
+            android:layout_height="33dp"
+            android:layout_width="167dp"
+            android:text="Restaurant Name"
+            android:layout_alignParentEnd="true"
 
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivPhoto"
-        app:layout_constraintVertical_bias="0.055" />
+            android:layout_alignParentTop="true"
+            tools:layout_editor_absoluteY="242dp" tools:layout_editor_absoluteX="201dp"/>
+
 
     <TextView
-        android:id="@+id/tvItemID"
-        android:text="Items Purchased"
-        android:layout_height="33dp"
-        android:layout_width="167dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvRestaurantNameID" />
+            android:id="@+id/tvCost"
+            android:layout_height="33dp"
+            android:layout_width="167dp"
+            android:text="Total Cost"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            tools:layout_editor_absoluteY="398dp" tools:layout_editor_absoluteX="201dp"/>
 
     <TextView
-        android:id="@+id/tvCostID"
-        android:layout_height="33dp"
-        android:layout_width="167dp"
-        android:text="Total Cost"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvItemID"
-        app:layout_constraintVertical_bias="0.068" />
-
-    <TextView
-        android:id="@+id/tvDateID"
-        android:layout_height="33dp"
-        android:layout_width="167dp"
-        android:text="Date of Purchase"
-        android:layout_alignEnd="@+id/tvCostID"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCostID"
-        app:layout_constraintVertical_bias="0.104" />
+            android:id="@+id/tvDate"
+            android:layout_height="33dp"
+            android:layout_width="167dp"
+            android:text="Date of Purchase"
+            android:layout_alignParentBottom="true"
+            tools:layout_editor_absoluteY="318dp" tools:layout_editor_absoluteX="201dp"/>
 
 </android.support.constraint.ConstraintLayout>

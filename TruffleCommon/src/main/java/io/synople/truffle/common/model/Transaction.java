@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class Ticket {
+public class Transaction {
 
     private String id;
     private List<Item> items;
@@ -14,7 +14,7 @@ public class Ticket {
     private String time;
     private double amount;
 
-    public Ticket(String id, List<Item> items, String customerId, String vendorId, String time, double amount) {
+    public Transaction(String id, List<Item> items, String customerId, String vendorId, String time, double amount) {
         this.id = id;
         this.items = items;
 
@@ -24,7 +24,7 @@ public class Ticket {
         this.amount = amount;
     }
 
-    public Ticket() {
+    public Transaction() {
         id = UUID.randomUUID().toString();
         items = new ArrayList<>();
         customerId = "";
