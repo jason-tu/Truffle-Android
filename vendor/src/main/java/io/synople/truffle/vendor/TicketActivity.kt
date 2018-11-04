@@ -1,13 +1,13 @@
 package io.synople.truffle.vendor
 
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
+import android.support.v7.app.AppCompatActivity
 import io.synople.truffle.common.model.Item
 import io.synople.truffle.common.model.User
 
-class TicketActivity : FragmentActivity() {
+class TicketActivity : AppCompatActivity() {
 
-    private val ticketFragment: TicketFragment by lazy {
+    val ticketFragment: TicketFragment by lazy {
         TicketFragment.newInstance()
     }
 

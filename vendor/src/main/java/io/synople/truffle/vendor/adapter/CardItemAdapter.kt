@@ -15,6 +15,26 @@ class CardItemAdapter(
 ) : RecyclerView.Adapter<CardItemAdapter.ViewHolder>() {
     class ViewHolder(private val v: View, private val itemClick: (Item) -> Unit) : RecyclerView.ViewHolder(v) {
         fun bind(item: Item) {
+
+            // mother of god help
+            when (item.name) {
+                "Hot Dog" -> v.ivItem.setImageResource(R.drawable.hotdog)
+                "Cheese Fries" -> v.ivItem.setImageResource(R.drawable.cheesefries)
+                "Chili Cheese Fries" -> v.ivItem.setImageResource(R.drawable.chilicheesedog)
+                "Curly Fries" -> v.ivItem.setImageResource(R.drawable.curlyfries)
+                "Sweet Potato Fries" -> v.ivItem.setImageResource(R.drawable.sweetpotatofries)
+                "Bean Salad" -> v.ivItem.setImageResource(R.drawable.beansalad)
+                "Coleslaw" -> v.ivItem.setImageResource(R.drawable.coleslaw)
+                "Onion Rings" -> v.ivItem.setImageResource(R.drawable.onionrings)
+                "Mini Cheese Balls" -> v.ivItem.setImageResource(R.drawable.minicheeseballs)
+                "Jalapeno Poppers" -> v.ivItem.setImageResource(R.drawable.jalapenopoppers)
+                "Soda" -> v.ivItem.setImageResource(R.drawable.soda)
+                "Lemonade" -> v.ivItem.setImageResource(R.drawable.lemonade)
+                "Jarritos" -> v.ivItem.setImageResource(R.drawable.jarritos)
+                "Mineral Water" -> v.ivItem.setImageResource(R.drawable.mineralwater)
+                "Churros" -> v.ivItem.setImageResource(R.drawable.churros)
+            }
+
             v.tvItemName.text = item.name
             v.tvItemPrice.text = NumberFormat.getCurrencyInstance().format(item.price)
 

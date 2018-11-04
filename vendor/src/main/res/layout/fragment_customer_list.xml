@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rvCustomerList"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.v7.widget.RecyclerView>
+    <TextView
+        android:id="@+id/tvNearby"
+        style="@style/text.28"
+        android:text="Nearby"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:id="@+id/hr"
+        android:layout_width="match_parent"
+        android:background="@android:color/darker_gray"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_below="@+id/tvNearby"
+        android:layout_height="1dp" />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvCustomerList"
+        android:layout_below="@+id/hr"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+</RelativeLayout>
