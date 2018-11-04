@@ -26,7 +26,6 @@ class ProfileFragment : Fragment() {
                     R.id.fragmentFrame,
                     TransactionHistoryFragment.newInstance(ticket)
                 ).commit()
-
         }
     }
 
@@ -47,6 +46,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tvUserName.text = user.name
+
         bScanFace.setOnClickListener {
             fragmentManager!!.beginTransaction().replace(
                 R.id.fragmentFrame,

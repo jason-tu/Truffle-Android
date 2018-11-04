@@ -8,9 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import com.amazonaws.regions.Regions
 import com.amazonaws.auth.CognitoCachingCredentialsProvider
 import com.amazonaws.services.rekognition.AmazonRekognitionClient
+import com.google.firebase.storage.FirebaseStorage
 import io.synople.truffle.common.model.User
 import kotlinx.android.synthetic.main.fragment_face_id.*
 import java.io.ByteArrayOutputStream
@@ -20,51 +22,48 @@ import kotlin.concurrent.thread
 
 private const val PROFILE = "profile"
 
-class IDFaceFragment: Fragment() {
+class IDFaceFragment : Fragment() {
     private lateinit var profile: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let{
+        arguments?.let {
             profile = it.getParcelable(PROFILE)!!
         }
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return inflater.inflate(R.layout.fragment_face_id, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         bCapturePhoto.setOnClickListener {
+            captureFace()
+
             fragmentManager!!.beginTransaction().replace(
                 R.id.fragmentFrame,
                 ProfileFragment.newInstance(profile)
             ).commit()
         }
-        captureFace()
+
+        cameraKit.visibility = View.VISIBLE
+
     }
 
     fun captureFace() {
-
-        ivProfileImage.visibility = View.INVISIBLE
-        cameraKit.visibility = View.VISIBLE
-
         cameraKit.captureImage { _, photo ->
             thread(true) {
-                val cameraImage = com.amazonaws.services.rekognition.model.Image().withBytes(ByteBuffer.wrap(photo))
-
-                val drawable = context!!.getDrawable(R.drawable.jason)
-                val bitmap = (drawable as BitmapDrawable).bitmap
-                val stream = ByteArrayOutputStream()
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
-                val storedImage =
-                    com.amazonaws.services.rekognition.model.Image()
-                        .withBytes(ByteBuffer.wrap(stream.toByteArray()))
+                FirebaseStorage.getInstance().reference.child(profile.id + ".jpg").putBytes(photo)
+                    .addOnSuccessListener {
+                        activity!!.runOnUiThread {
+                            Toast.makeText(context, "Uploaded!", Toast.LENGTH_SHORT).show()
+                        }
+                    }
             }
         }
     }
