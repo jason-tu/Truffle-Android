@@ -33,6 +33,20 @@ class CardItemAdapter(
                 "Jarritos" -> v.ivItem.setImageResource(R.drawable.jarritos)
                 "Mineral Water" -> v.ivItem.setImageResource(R.drawable.mineralwater)
                 "Churros" -> v.ivItem.setImageResource(R.drawable.churros)
+                "Hush Puppies" -> v.ivItem.setImageResource(R.drawable.hushpuppies)
+                "Ice Cream" -> v.ivItem.setImageResource(R.drawable.icecream)
+                "Popsicle" -> v.ivItem.setImageResource(R.drawable.popsicle)
+                "Corn Dog" -> v.ivItem.setImageResource(R.drawable.corndog)
+                "Mozzarella Sticks" -> v.ivItem.setImageResource(R.drawable.mozzerallasticks)
+                "Potato Chips" -> v.ivItem.setImageResource(R.drawable.potatochips)
+                "Pretzel" -> v.ivItem.setImageResource(R.drawable.pretzel)
+                "Pizza" -> v.ivItem.setImageResource(R.drawable.pizza)
+                "Burger" -> v.ivItem.setImageResource(R.drawable.burger)
+                "Funnel Cake" -> v.ivItem.setImageResource(R.drawable.funnelcake)
+                "Quesadilla" -> v.ivItem.setImageResource(R.drawable.quesadilla)
+                "Po' Boy" -> v.ivItem.setImageResource(R.drawable.poboy)
+                "Pop-corn Shrimp" -> v.ivItem.setImageResource(R.drawable.popcornshrimp)
+                "Corn" -> v.ivItem.setImageResource(R.drawable.corn)
             }
 
             v.tvItemName.text = item.name
