@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Truffle-Android.iml" filepath="$PROJECT_DIR$/Truffle-Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TruffleCommon/TruffleCommon.iml" filepath="$PROJECT_DIR$/TruffleCommon/TruffleCommon.iml" />
       <module fileurl="file://$PROJECT_DIR$/client/client.iml" filepath="$PROJECT_DIR$/client/client.iml" />
       <module fileurl="file://$PROJECT_DIR$/models/models.iml" filepath="$PROJECT_DIR$/models/models.iml" />
       <module fileurl="file://$PROJECT_DIR$/vendor/vendor.iml" filepath="$PROJECT_DIR$/vendor/vendor.iml" />
