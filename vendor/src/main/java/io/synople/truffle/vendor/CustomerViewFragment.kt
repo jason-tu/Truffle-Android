@@ -14,7 +14,10 @@ import com.amazonaws.regions.Regions
 import com.amazonaws.auth.CognitoCachingCredentialsProvider
 import com.amazonaws.services.rekognition.AmazonRekognitionClient
 import com.amazonaws.services.rekognition.model.CompareFacesRequest
+import com.bumptech.glide.Glide
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.fragment_customer_view.*
+import kotlinx.android.synthetic.main.row_customer.view.*
 import java.io.ByteArrayOutputStream
 import java.nio.ByteBuffer
 import kotlin.concurrent.thread
@@ -61,32 +64,33 @@ class CustomerViewFragment : Fragment() {
         tvCustomerName.setOnClickListener {
             thread(true) {
                 cameraKit.captureImage { _, photo ->
-                    val cameraImage = com.amazonaws.services.rekognition.model.Image().withBytes(ByteBuffer.wrap(photo))
+                    FirebaseStorage.getInstance().reference.child(customer.id + ".jpg").getBytes(1024 * 1024)
+                        .addOnSuccessListener { referenceImage ->
+                            val cameraImage =
+                                com.amazonaws.services.rekognition.model.Image()
+                                    .withBytes(ByteBuffer.wrap(photo))
+                            val storedImage =
+                                com.amazonaws.services.rekognition.model.Image()
+                                    .withBytes(ByteBuffer.wrap(referenceImage))
 
-                    val drawable = context!!.getDrawable(R.drawable.jason)
-                    val bitmap = (drawable as BitmapDrawable).bitmap
-                    val stream = ByteArrayOutputStream()
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
-                    val storedImage =
-                        com.amazonaws.services.rekognition.model.Image()
-                            .withBytes(ByteBuffer.wrap(stream.toByteArray()))
-
-                    thread(true) {
-                        val matches = rekognitionClient.compareFaces(CompareFacesRequest(cameraImage, storedImage))
-                        activity!!.runOnUiThread {
-                            if (matches.faceMatches.size > 0) {
-                                Log.v("Result", matches.faceMatches[0].similarity.toString())
-                                Toast.makeText(
-                                    context,
-                                    "Similarity: ${matches.faceMatches.get(0).similarity}",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            } else {
-                                Log.v("Result", "No face match")
-                                Toast.makeText(context, "No face match", Toast.LENGTH_SHORT).show()
+                            thread(true) {
+                                val matches =
+                                    rekognitionClient.compareFaces(CompareFacesRequest(cameraImage, storedImage))
+                                activity!!.runOnUiThread {
+                                    if (matches.faceMatches.size > 0) {
+                                        Log.v("Result", matches.faceMatches[0].similarity.toString())
+                                        Toast.makeText(
+                                            context,
+                                            "Similarity: ${matches.faceMatches.get(0).similarity}",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    } else {
+                                        Log.v("Result", "No face match")
+                                        Toast.makeText(context, "No face match", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
                             }
                         }
-                    }
                 }
             }
         }
