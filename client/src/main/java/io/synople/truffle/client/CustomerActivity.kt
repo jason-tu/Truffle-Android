@@ -16,13 +16,6 @@ class CustomerActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_customer)
-        val bScanFace = findViewById<Button>(R.id.bScanFace)
-        bScanFace?.setOnClickListener {
-            supportFragmentManager.beginTransaction().replace(
-                R.id.fragmentFrame,
-                IDFaceFragment.newInstance(profile)
-            ).commit()
-        }
 
         val docRef = FirebaseFirestore.getInstance().collection("users").document("absCSuaFEhxFhcpzoHvr")
         docRef.get().addOnSuccessListener { documentSnapshot ->

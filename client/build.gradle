@@ -44,6 +44,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:17.1.2'
     implementation 'com.google.firebase:firebase-storage:16.0.4'
 
+    implementation('com.amazonaws:aws-android-sdk-rekognition:2.7.5') { transitive = true }
+
     implementation 'com.camerakit:camerakit:1.0.0-beta3.9'
     implementation 'com.camerakit:jpegkit:0.1.0'
     testImplementation 'junit:junit:4.12'
