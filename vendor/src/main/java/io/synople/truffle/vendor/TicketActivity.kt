@@ -3,6 +3,7 @@ package io.synople.truffle.vendor
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import io.synople.truffle.common.model.Item
+import io.synople.truffle.common.model.User
 
 class TicketActivity : FragmentActivity() {
 
@@ -11,6 +12,7 @@ class TicketActivity : FragmentActivity() {
     }
 
     val ticketItems: MutableList<Item> = mutableListOf()
+    var selectedCustomer: User? = User()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +21,8 @@ class TicketActivity : FragmentActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.ticketFrame, ticketFragment).commit()
         supportFragmentManager.beginTransaction().replace(R.id.itemsFrame, ItemsFragment.newInstance()).commit()
-        supportFragmentManager.beginTransaction().replace(R.id.customersFrame, CustomerListFragment.newInstance()).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.customersFrame, CustomerListFragment.newInstance())
+            .commit()
     }
 
     fun notifyTicketChanged() {

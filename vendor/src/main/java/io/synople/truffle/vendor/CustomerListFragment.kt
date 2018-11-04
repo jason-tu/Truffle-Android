@@ -6,17 +6,24 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import io.synople.truffle.common.model.Item
+import io.synople.truffle.common.model.Ticket
 import io.synople.truffle.common.model.User
 import io.synople.truffle.vendor.adapter.CustomerAdapter
 import kotlinx.android.synthetic.main.fragment_customer_list.*
+import com.google.firebase.firestore.FirebaseFirestore
+
 
 class CustomerListFragment : Fragment() {
 
-    val customers: MutableList<User> = mutableListOf();
+    val customers: MutableList<User> = mutableListOf()
 
     val adapter: CustomerAdapter by lazy {
         CustomerAdapter(customers) { customer ->
-            fragmentManager!!.beginTransaction().replace(R.id.customersFrame, CustomerViewFragment.newInstance(customer)).commit()
+            (activity as TicketActivity).selectedCustomer = customer
+
+            fragmentManager!!.beginTransaction()
+                .replace(R.id.customersFrame, CustomerViewFragment.newInstance(customer)).commit()
         }
     }
 
@@ -24,8 +31,22 @@ class CustomerListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        customers.add(User("1", "Cixin Liu"))
-        customers.add(User("2", "Tyrone Reese"))
+
+        // TODO: Populate customers
+        val docRef = FirebaseFirestore.getInstance().collection("users").document("T3ZwXPVjVseIZnHgr1Vw")
+        docRef.get().addOnSuccessListener { documentSnapshot ->
+            val cixin = documentSnapshot.toObject<User>(User::class.java)
+
+            val docRef2 = FirebaseFirestore.getInstance().collection("users").document("absCSuaFEhxFhcpzoHvr")
+            docRef2.get().addOnSuccessListener { documentSnapshot2 ->
+                val jason = documentSnapshot2.toObject<User>(User::class.java)
+
+                customers.add(cixin!!)
+                customers.add(jason!!)
+
+                activity!!.runOnUiThread { adapter.notifyDataSetChanged() }
+            }
+        }
 
         return inflater.inflate(R.layout.fragment_customer_list, container, false)
     }
