@@ -3,7 +3,6 @@ package io.synople.truffle.client
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,6 +46,9 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tvUserName.text = user.name
+
+        tickets.addAll(user.transactions)
+        adapter.notifyDataSetChanged()
 
         rvTransactionHistory.adapter = adapter
         rvTransactionHistory.layoutManager = LinearLayoutManager(context)

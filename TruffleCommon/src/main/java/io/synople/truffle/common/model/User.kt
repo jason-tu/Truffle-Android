@@ -7,6 +7,5 @@ import kotlinx.android.parcel.Parcelize
 class User(
     var id: String = "",
     var name: String = "",
-    var tickets: MutableList<Ticket> = mutableListOf(),
-    var imageURL: String = ""
+    var transactions: MutableList<Ticket> = mutableListOf()
 ): Parcelable

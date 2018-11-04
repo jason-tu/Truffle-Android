@@ -17,7 +17,7 @@ class TicketAdapter(
     class ViewHolder(private val v: View, private val itemClick: (Ticket) -> Unit) : RecyclerView.ViewHolder(v) {
         fun bind(ticket: Ticket) {
             v.tvVendor.text = ticket.vendorId
-            v.tvCost.text = ticket.amount.toString()
+            v.tvCost.text = NumberFormat.getCurrencyInstance().format(ticket.amount)
             v.tvDate.text = ticket.time
 
             v.setOnClickListener {

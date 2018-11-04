@@ -1,8 +1,6 @@
 package io.synople.truffle.vendor
 
 
-import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AlertDialog
@@ -12,7 +10,6 @@ import android.view.ViewGroup
 import com.google.firebase.firestore.FirebaseFirestore
 import io.synople.truffle.common.model.Ticket
 import io.synople.truffle.common.model.User
-import io.synople.truffle.common.model.Vendor
 import kotlinx.android.synthetic.main.fragment_cash.*
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
@@ -48,7 +45,7 @@ class CashFragment : Fragment() {
             ticket.id = UUID.randomUUID().toString()
             ticket.items.addAll((activity as TicketActivity).ticketItems)
             ticket.customerId = "absCSuaFEhxFhcpzoHvr"
-            ticket.vendorId = "1337"
+            ticket.vendorId = "Frank's Central Park Hot Dog Stand"
             ticket.time = sdf.format(Date())
             ticket.amount = sum.toDouble()
 

@@ -7,5 +7,5 @@ import kotlinx.android.parcel.Parcelize
 data class Vendor(
     var id: String = "",
     var name: String = "",
-    var items: MutableList<Item> = mutableListOf()
+    var transactions: MutableList<Item> = mutableListOf()
 ) : Parcelable

@@ -1,41 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/lightGray"
+    android:layout_height="match_parent">
 
     <TextView
-            android:text="TextView"
-            android:textSize="32dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvUserName"
-            android:gravity="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/rvTransactionHistory" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="8dp"/>
+        android:id="@+id/tvUserName"
+        style="@style/text.72"
+        android:textSize="32sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:id="@+id/hr"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/tvUserName"
+        android:background="@android:color/black"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="22dp"
+        android:layout_height="1dp" />
 
     <android.support.v7.widget.RecyclerView
-            android:layout_width="371dp"
-            android:layout_height="379dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
-            android:id="@+id/rvTransactionHistory" app:layout_constraintBottom_toTopOf="@+id/bScanFace"/>
+        android:id="@+id/rvTransactionHistory"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/hr"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bScanFace" />
 
     <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/bScanFace"
-            android:text="ID Face"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" android:layout_marginEnd="8dp"/>
+        android:id="@+id/bScanFace"
+        style="@style/text.18"
+        android:textAllCaps="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Configure FaceSecurity"
+        android:layout_alignParentBottom="true" />
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.fragment_items.*
 class ItemsFragment : Fragment() {
 
     private val itemAdapter: CardItemAdapter by lazy {
-        CardItemAdapter(AppContext.vendor.items) { item ->
+        CardItemAdapter(AppContext.vendor.transactions) { item ->
             (activity as TicketActivity).ticketItems.add(item)
             (activity as TicketActivity).notifyTicketChanged()
         }
