@@ -34,9 +34,6 @@ public class MainActivity extends AppCompatActivity {
         tickets.add(new Ticket());
         tickets.add(new Ticket());
 
-
-
-
         adapter.notifyDataSetChanged();
     }
 
@@ -54,13 +51,11 @@ public class MainActivity extends AppCompatActivity {
             public TextView mTextView04;
 
             public MyViewHolder(TextView v, TextView w, TextView x, TextView y) {
-                super(v);
+                super(ConstraintLayout);
+
                 mTextView01 = v;
-
                 mTextView02 = w;
-
                 mTextView03 = x;
-
                 mTextView04 = y;
             }
         }
@@ -78,16 +73,9 @@ public class MainActivity extends AppCompatActivity {
             ConstraintLayout v = (ConstraintLayout) LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.list_item_ticket, parent, false);
 
-//            return new MyViewHolder(
-//                    findViewById(R.id.tvRestaurantNameID), (TextView) v.findViewById(R.id.tvItemID),
-//                    (TextView) v.findViewById(R.id.tvCostID), (TextView) v.findViewById(R.id.tvDateID));
-//
-
             return new MyViewHolder(
                     (TextView) v.findViewById(R.id.tvRestaurantNameID), (TextView) v.findViewById(R.id.tvItemID),
                     (TextView) v.findViewById(R.id.tvCostID), (TextView) v.findViewById(R.id.tvDateID));
-
-
 
         }
 
