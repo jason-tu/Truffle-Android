@@ -21,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
             .get().addOnSuccessListener {
                 AppContext.vendor = it.toObject(Vendor::class.java)!!
 
-                startActivity(Intent(SplashActivity@ this, MainActivity::class.java))
+                startActivity(Intent(SplashActivity@ this, TicketActivity::class.java))
                 finish()
             }
     }
