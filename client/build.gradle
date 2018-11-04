@@ -1,10 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-<<<<<<< HEAD
-=======
 
->>>>>>> c5a60bb... About to pull from master. Just committing my changes.
+
 android {
     compileSdkVersion 28
 
