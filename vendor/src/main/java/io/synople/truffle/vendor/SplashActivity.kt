@@ -12,7 +12,7 @@ class SplashActivity : AppCompatActivity() {
 
         // TODO: Load data from Firebase
 
-        startActivity(Intent(SplashActivity@ this, MainActivity::class.java))
+        startActivity(Intent(SplashActivity@this, MainActivity::class.java))
         finish()
     }
 }

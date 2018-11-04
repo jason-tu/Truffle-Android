@@ -1,16 +1,16 @@
-package com.example.models;
+package io.synople.truffle.common.model;
 
 import java.util.UUID;
 
 public class User {
 
-    private UUID id;
+    private String id;
     private String name;
 
-    public User(UUID id, String name) {
+    public User(String id, String name) {
         this.id = id;
         this.name = name;
 
     }
-    
+
 }
