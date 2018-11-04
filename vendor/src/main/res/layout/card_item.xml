@@ -2,6 +2,9 @@
     android:id="@+id/cardItem"
     android:layout_width="150dp"
     android:layout_height="100dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
     android:layout_margin="8dp">
 
     <LinearLayout
