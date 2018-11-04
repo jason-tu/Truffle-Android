@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import io.synople.truffle.client.R
 import io.synople.truffle.common.model.Item
 import io.synople.truffle.common.model.Ticket
+import kotlinx.android.synthetic.main.list_item_ticket.view.*
 import java.text.NumberFormat
 
 class TicketAdapter(
@@ -15,6 +16,9 @@ class TicketAdapter(
 ) : RecyclerView.Adapter<TicketAdapter.ViewHolder>() {
     class ViewHolder(private val v: View, private val itemClick: (Ticket) -> Unit) : RecyclerView.ViewHolder(v) {
         fun bind(ticket: Ticket) {
+            v.tvVendor.text = ticket.vendorId
+            v.tvCost.text = ticket.amount.toString()
+            v.tvDate.text = ticket.time
 
             v.setOnClickListener {
                 itemClick(ticket)

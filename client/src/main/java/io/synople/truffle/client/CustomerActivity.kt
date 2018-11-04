@@ -2,6 +2,7 @@ package io.synople.truffle.client
 
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
+import com.google.firebase.firestore.FirebaseFirestore
 import io.synople.truffle.common.model.Item
 import io.synople.truffle.common.model.User
 
@@ -13,9 +14,14 @@ class CustomerActivity : FragmentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_customer)
 
-        profile = User("1", "Cixin Liu")
+        val docRef = FirebaseFirestore.getInstance().collection("users").document("T3ZwXPVjVseIZnHgr1Vw")
+        docRef.get().addOnSuccessListener { documentSnapshot ->
+            profile = documentSnapshot.toObject<User>(User::class.java)!!
 
-        supportFragmentManager.beginTransaction().replace(R.id.fragmentFrame, ProfileFragment.newInstance(profile)).commit()
+            supportFragmentManager.beginTransaction().replace(R.id.fragmentFrame, ProfileFragment.newInstance(profile)).commit()
+        }
+        // absCSuaFEhxFhcpzoHvr
+
     }
 
 }
