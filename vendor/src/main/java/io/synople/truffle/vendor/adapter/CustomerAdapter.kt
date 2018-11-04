@@ -4,10 +4,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.stripe.android.model.Customer
 import io.synople.truffle.common.model.User
 import io.synople.truffle.vendor.R
-import kotlinx.android.synthetic.main.card_customer.view.*
+import kotlinx.android.synthetic.main.row_customer.view.*
 
 class CustomerAdapter(
     private val items: MutableList<User>,
@@ -24,7 +23,7 @@ class CustomerAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.card_customer, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.row_customer, parent, false)
         return ViewHolder(view, itemClick)
     }
 

@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import io.synople.truffle.common.model.User
 import io.synople.truffle.vendor.adapter.RowItemAdapter
 import kotlinx.android.synthetic.main.fragment_ticket.*
 import java.text.NumberFormat
@@ -33,15 +34,22 @@ class TicketFragment : Fragment() {
         rvTicket.layoutManager = LinearLayoutManager(context)
 
         checkout.setOnClickListener {
-            fragmentManager!!.beginTransaction()
-                .replace(R.id.customersFrame, PaymentFragment.newInstance())
-                .commit()
+            if ((activity as TicketActivity).selectedCustomer != null && (activity as TicketActivity).selectedCustomer!!.equals(User())) {
+                // if met threshold, do face scan, otherwise clear ticket
+                (fragmentManager!!.findFragmentByTag("CustomerViewFragment") as CustomerViewFragment)
+                    .setupRecognize()
+            } else {
+                fragmentManager!!.beginTransaction()
+                    .replace(R.id.customersFrame, PaymentFragment.newInstance())
+                    .commit()
+            }
         }
 
         btnClearTicket.setOnClickListener {
             ((activity as TicketActivity).ticketItems.clear())
             adapter.notifyDataSetChanged()
             checkout.text = "Checkout"
+            (activity as TicketActivity).selectedCustomer = User()
 
             fragmentManager!!.beginTransaction()
                 .replace(R.id.customersFrame, CustomerListFragment.newInstance()).commit()
