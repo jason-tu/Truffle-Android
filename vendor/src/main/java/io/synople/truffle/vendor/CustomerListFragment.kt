@@ -33,7 +33,12 @@ class CustomerListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        // TODO: Populate customers
+        getCustomers()
+
+        return inflater.inflate(R.layout.fragment_customer_list, container, false)
+    }
+
+    fun getCustomers() {
         val docRef = FirebaseFirestore.getInstance().collection("users").document("T3ZwXPVjVseIZnHgr1Vw")
         docRef.get().addOnSuccessListener { documentSnapshot ->
             val cixin = documentSnapshot.toObject<User>(User::class.java)
@@ -42,14 +47,16 @@ class CustomerListFragment : Fragment() {
             docRef2.get().addOnSuccessListener { documentSnapshot2 ->
                 val jason = documentSnapshot2.toObject<User>(User::class.java)
 
+                customers.clear()
                 customers.add(cixin!!)
                 customers.add(jason!!)
 
-                activity!!.runOnUiThread { adapter.notifyDataSetChanged() }
+                activity!!.runOnUiThread {
+                    swipeRefresh.isRefreshing = false
+                    adapter.notifyDataSetChanged()
+                }
             }
         }
-
-        return inflater.inflate(R.layout.fragment_customer_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,6 +64,11 @@ class CustomerListFragment : Fragment() {
 
         rvCustomerList.adapter = adapter
         rvCustomerList.layoutManager = LinearLayoutManager(context)
+
+        swipeRefresh.setOnRefreshListener {
+            swipeRefresh.isRefreshing = true
+            getCustomers()
+        }
     }
 
     companion object {

@@ -3,6 +3,7 @@ package io.synople.truffle.vendor
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.google.firebase.FirebaseApp
 import com.google.firebase.firestore.FirebaseFirestore
 import io.synople.truffle.common.model.Vendor
@@ -20,6 +21,8 @@ class SplashActivity : AppCompatActivity() {
             .document("HQndq6BHW3s9Pvd0f3cQ") // TODO: Replace with Id from FirebaseAuth
             .get().addOnSuccessListener {
                 AppContext.vendor = it.toObject(Vendor::class.java)!!
+
+                Log.v("Test", AppContext.vendor.toString())
 
                 startActivity(Intent(SplashActivity@ this, TicketActivity::class.java))
                 finish()

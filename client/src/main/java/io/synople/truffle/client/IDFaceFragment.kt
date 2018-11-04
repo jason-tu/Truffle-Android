@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,11 +45,6 @@ class IDFaceFragment : Fragment() {
 
         bCapturePhoto.setOnClickListener {
             captureFace()
-
-            fragmentManager!!.beginTransaction().replace(
-                R.id.fragmentFrame,
-                ProfileFragment.newInstance(profile)
-            ).commit()
         }
 
         cameraKit.visibility = View.VISIBLE
@@ -62,6 +58,15 @@ class IDFaceFragment : Fragment() {
                     .addOnSuccessListener {
                         activity!!.runOnUiThread {
                             Toast.makeText(context, "Uploaded!", Toast.LENGTH_SHORT).show()
+                            fragmentManager!!.beginTransaction().replace(
+                                R.id.fragmentFrame,
+                                ProfileFragment.newInstance(profile)
+                            ).commit()
+                        }
+                    }.addOnFailureListener {
+                        activity!!.runOnUiThread {
+                            Log.e("Upload", "F", it)
+                            Toast.makeText(context, "FAILURE!", Toast.LENGTH_SHORT).show()
                         }
                     }
             }
