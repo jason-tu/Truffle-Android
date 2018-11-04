@@ -18,7 +18,7 @@ class TicketActivity : AppCompatActivity() {
 
         supportFragmentManager.beginTransaction().replace(R.id.ticketFrame, ticketFragment).commit()
         supportFragmentManager.beginTransaction().replace(R.id.itemsFrame, ItemsFragment.newInstance()).commit()
-        supportFragmentManager.beginTransaction().replace(R.id.customersFrame, CustomersFragment.newInstance()).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.customersFrame, CustomerListFragment.newInstance()).commit()
     }
 
     fun notifyTicketChanged() {
