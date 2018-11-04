@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.app.AlertDialog
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -91,6 +92,19 @@ class CustomerViewFragment : Fragment() {
                                             "Similarity: ${matches.faceMatches.get(0).similarity}",
                                             Toast.LENGTH_SHORT
                                         ).show()
+
+                                        if (matches.faceMatches[0].similarity > 70) {
+                                            val builder = AlertDialog.Builder(
+                                                context!!,
+                                                android.R.style.Theme_Material_Dialog_Alert
+                                            )
+                                            builder.setMessage("Confirmed")
+                                            builder.setCancelable(false)
+                                            builder.setPositiveButton("Ok") { _, _ ->
+                                                (activity as TicketActivity).ticketFragment.clearTicket()
+                                            }
+                                            builder.create().show()
+                                        }
                                     } else {
                                         Log.v("Result", "No face match")
                                         Toast.makeText(context, "No face match", Toast.LENGTH_SHORT).show()

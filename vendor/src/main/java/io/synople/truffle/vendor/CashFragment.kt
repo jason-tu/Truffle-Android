@@ -34,39 +34,6 @@ class CashFragment : Fragment() {
         balanceDue.text = NumberFormat.getCurrencyInstance().format(sum)
 
         btnSubmit.setOnClickListener {
-
-            val sdf = SimpleDateFormat("MM/dd/yy HH:mm")
-            var sum = 0f
-            (activity as TicketActivity).ticketItems.forEach { item ->
-                sum += item.price
-            }
-
-            val ticket = Ticket()
-            ticket.id = UUID.randomUUID().toString()
-            ticket.items.addAll((activity as TicketActivity).ticketItems)
-            ticket.customerId = "absCSuaFEhxFhcpzoHvr"
-            ticket.vendorId = "Frank's Central Park Hot Dog Stand"
-            ticket.time = sdf.format(Date())
-            ticket.amount = sum.toDouble()
-
-            var custId = "absCSuaFEhxFhcpzoHvr"
-            if ((activity as TicketActivity).selectedCustomer != null
-                && (activity as TicketActivity).selectedCustomer != User()
-            ) {
-                custId = (activity as TicketActivity).selectedCustomer!!.id
-            }
-
-            FirebaseFirestore.getInstance()
-                .collection("users")
-                .document(custId) // TODO: Replace with Id from FirebaseAuth
-                .get().addOnSuccessListener {
-                    val jason = it.toObject(User::class.java)!!
-                    jason.transactions.add(ticket)
-
-                    FirebaseFirestore.getInstance().collection("users")
-                        .document(custId).set(jason)
-                }
-
             val builder = AlertDialog.Builder(context!!, android.R.style.Theme_Material_Dialog_Alert)
             builder.setMessage("Confirmed")
             builder.setCancelable(false)

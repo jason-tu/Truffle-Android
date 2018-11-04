@@ -6,11 +6,14 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.firebase.firestore.FirebaseFirestore
 import io.synople.truffle.common.model.Ticket
 import io.synople.truffle.common.model.User
 import io.synople.truffle.vendor.adapter.RowItemAdapter
 import kotlinx.android.synthetic.main.fragment_ticket.*
 import java.text.NumberFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class TicketFragment : Fragment() {
@@ -55,6 +58,39 @@ class TicketFragment : Fragment() {
     }
 
     fun clearTicket() {
+        val sdf = SimpleDateFormat("MM/dd/yy HH:mm")
+        var sum = 0f
+        (activity as TicketActivity).ticketItems.forEach { item ->
+            sum += item.price
+        }
+
+        val ticket = Ticket()
+        ticket.id = UUID.randomUUID().toString()
+        ticket.items.addAll((activity as TicketActivity).ticketItems)
+        ticket.customerId = "absCSuaFEhxFhcpzoHvr"
+        ticket.vendorId = "Frank's Central Park Hot Dog Stand"
+        ticket.time = sdf.format(Date())
+        ticket.amount = sum.toDouble()
+
+        var custId = "absCSuaFEhxFhcpzoHvr"
+        if ((activity as TicketActivity).selectedCustomer != null
+            && (activity as TicketActivity).selectedCustomer != User()
+        ) {
+            custId = (activity as TicketActivity).selectedCustomer!!.id
+        }
+
+        FirebaseFirestore.getInstance()
+            .collection("users")
+            .document(custId) // TODO: Replace with Id from FirebaseAuth
+            .get().addOnSuccessListener {
+                val jason = it.toObject(User::class.java)!!
+                jason.transactions.add(ticket)
+
+                FirebaseFirestore.getInstance().collection("users")
+                    .document(custId).set(jason)
+            }
+
+        
         ((activity as TicketActivity).ticketItems.clear())
         adapter.notifyDataSetChanged()
         checkout.text = "Checkout"
