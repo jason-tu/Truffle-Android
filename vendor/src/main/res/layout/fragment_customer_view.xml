@@ -8,6 +8,7 @@
         android:id="@+id/ivCustomerImage"
         android:layout_width="match_parent"
         android:src="@drawable/android"
+        android:scaleType="center"
         android:layout_height="300dp" />
 
     <com.camerakit.CameraKitView

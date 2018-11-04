@@ -36,7 +36,7 @@ class TicketFragment : Fragment() {
 
         checkout.setOnClickListener {
             if ((activity as TicketActivity).selectedCustomer != null
-                && (activity as TicketActivity).selectedCustomer!! == User()
+                && (activity as TicketActivity).selectedCustomer!! != User()
                 && (activity as TicketActivity).selectedCustomer!!.name == "Jason Tu"
             ) {
                 // if met threshold, do face scan, otherwise clear ticket

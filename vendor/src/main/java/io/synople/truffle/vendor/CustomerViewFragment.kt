@@ -44,7 +44,14 @@ class CustomerViewFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupRecognize()
+        // setupRecognize()
+
+        FirebaseStorage.getInstance().reference.child(customer.id + ".jpg").downloadUrl.addOnSuccessListener {
+            Glide.with(view.context)
+                .load(it.toString())
+                .into(ivCustomerImage)
+        }
+
         tvCustomerName.text = customer.name
     }
 
