@@ -23,7 +23,8 @@ class CustomerListFragment : Fragment() {
             (activity as TicketActivity).selectedCustomer = customer
 
             fragmentManager!!.beginTransaction()
-                .replace(R.id.customersFrame, CustomerViewFragment.newInstance(customer)).commit()
+                .replace(R.id.customersFrame, CustomerViewFragment.newInstance(customer), "CustomerViewFragment")
+                .commit()
         }
     }
 

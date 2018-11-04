@@ -40,8 +40,7 @@ class TicketFragment : Fragment() {
                 && (activity as TicketActivity).selectedCustomer!!.name == "Jason Tu"
             ) {
                 // if met threshold, do face scan, otherwise clear ticket
-                (fragmentManager!!.findFragmentByTag("CustomerViewFragment") as CustomerViewFragment)
-                    .setupRecognize()
+                ((activity as TicketActivity).supportFragmentManager.findFragmentByTag("CustomerViewFragment") as CustomerViewFragment).setupRecognize()
             } else {
                 fragmentManager!!.beginTransaction()
                     .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left)
