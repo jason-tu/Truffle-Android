@@ -6,26 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import io.synople.truffle.common.model.Item
 import io.synople.truffle.vendor.R
-import kotlinx.android.synthetic.main.card_item.view.*
+import kotlinx.android.synthetic.main.row_item.view.*
 import java.text.NumberFormat
 
-class CardItemAdapter(
+class RowItemAdapter(
     private val items: MutableList<Item>,
     private val itemClick: (Item) -> Unit
-) : RecyclerView.Adapter<CardItemAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<RowItemAdapter.ViewHolder>() {
     class ViewHolder(private val v: View, private val itemClick: (Item) -> Unit) : RecyclerView.ViewHolder(v) {
         fun bind(item: Item) {
             v.tvItemName.text = item.name
             v.tvItemPrice.text = NumberFormat.getCurrencyInstance().format(item.price)
-
-            v.setOnClickListener {
-                itemClick(item)
-            }
+            v.setOnClickListener { itemClick(item) }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.card_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.row_item, parent, false)
         return ViewHolder(view, itemClick)
     }
 
