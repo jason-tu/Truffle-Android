@@ -44,7 +44,7 @@ class TicketFragment : Fragment() {
             checkout.text = "Checkout"
 
             fragmentManager!!.beginTransaction()
-                .replace(R.id.customersFrame, CustomersFragment.newInstance()).commit()
+                .replace(R.id.customersFrame, CustomerListFragment.newInstance()).commit()
         }
     }
 
