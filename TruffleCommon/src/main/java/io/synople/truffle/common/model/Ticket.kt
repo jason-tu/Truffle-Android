@@ -8,10 +8,10 @@ import java.util.UUID
 
 @Parcelize
 data class Ticket(
-    var id: String? = null,
-    var items: List<Item>? = null,
-    var customerId: String? = null,
-    var vendorId: String? = null,
-    var time: String? = null,
-    var amount: Double = 0.toDouble()
+    var id: String = "",
+    var items: MutableList<Item> = mutableListOf(),
+    var customerId: String = "",
+    var vendorId: String = "",
+    var time: String = "",
+    var amount: Double = 0.0
 ) : Parcelable
