@@ -3,6 +3,7 @@ package com.example.models;
 import java.util.UUID;
 
 public class User {
+
     private UUID id;
     private String name;
 
@@ -11,6 +12,5 @@ public class User {
         this.name = name;
 
     }
-
-
+    
 }
