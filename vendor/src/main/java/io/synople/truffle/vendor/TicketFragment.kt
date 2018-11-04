@@ -12,7 +12,7 @@ class TicketFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_ticket_frame, container, false)
+        return inflater.inflate(R.layout.fragment_ticket, container, false)
     }
 
     companion object {
