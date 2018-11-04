@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import io.synople.truffle.client.adapter.TicketAdapter
 import io.synople.truffle.common.model.Ticket
 import io.synople.truffle.common.model.User
@@ -46,6 +47,12 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tvUserName.text = user.name
+        bScanFace.setOnClickListener {
+            fragmentManager!!.beginTransaction().replace(
+                R.id.fragmentFrame,
+                IDFaceFragment.newInstance(user)
+            ).commit()
+        }
 
         tickets.addAll(user.transactions)
         adapter.notifyDataSetChanged()
