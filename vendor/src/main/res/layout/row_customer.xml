@@ -16,6 +16,7 @@
     <TextView
         android:id="@+id/tvCustomerName"
         style="@style/text.18"
+        android:layout_marginStart="8dp"
         android:layout_toEndOf="@+id/ivCustomerImage"
         android:layout_centerVertical="true"
         android:layout_width="wrap_content"
