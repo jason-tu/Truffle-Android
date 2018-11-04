@@ -4,5 +4,8 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
+    <color name="forestGreen">#228b22</color>
+
     <color name="titanium">#6a696f</color>
+    <color name="lightGray">#E0E0E0</color>
 </resources>

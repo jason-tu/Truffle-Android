@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CashFragment">
+
+    <TextView
+        android:id="@+id/tvCash"
+        style="@style/text.28"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"
+        android:text="Cash" />
+
+    <View
+        android:layout_width="match_parent"
+        android:background="@android:color/darker_gray"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_below="@+id/tvCash"
+        android:layout_height="1dp" />
+
+    <TextView
+        android:id="@+id/balanceDue"
+        style="@style/text.72"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:layout_below="@+id/tvCash"
+        android:textColor="@android:color/holo_green_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/enteredBalance"
+        style="@style/text.22"
+        android:layout_below="@+id/balanceDue"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:text="$0.00"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:id="@+id/pinpad"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/enteredBalance"
+        android:layout_marginTop="12dp"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/numbers"
+            android:layout_width="wrap_content"
+            android:weightSum="4"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <Button
+                    android:id="@+id/btnOne"
+                    style="@style/text.16"
+                    android:layout_height="75dp"
+                    android:layout_width="75dp"
+                    android:text="1" />
+
+                <Button
+                    android:id="@+id/btnTwo"
+                    style="@style/text.16"
+                    android:text="2"
+                    android:layout_height="75dp"
+                    android:layout_width="75dp" />
+
+                <Button
+                    android:id="@+id/btnThree"
+                    style="@style/text.16"
+                    android:text="3"
+                    android:layout_height="75dp"
+                    android:layout_width="75dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <Button
+                    android:id="@+id/btnFour"
+                    android:text="4"
+                    android:layout_height="75dp"
+                    android:layout_width="75dp" />
+
+                <Button
+                    android:id="@+id/btnFive"
+                    android:text="5"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp" />
+
+                <Button
+                    android:id="@+id/btnSix"
+                    android:text="6"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <Button
+                    android:id="@+id/btnSeven"
+                    android:text="7"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp" />
+
+                <Button
+                    android:id="@+id/btnEight"
+                    android:text="8"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp" />
+
+                <Button
+                    android:id="@+id/btnNine"
+                    android:text="9"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <Button
+                    android:id="@+id/btnDelete"
+                    android:text="!"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp" />
+
+                <Button
+                    android:id="@+id/btnZero"
+                    android:text="0"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp" />
+
+                <Button
+                    android:visibility="invisible"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnSubmit"
+        style="@style/text.18"
+        android:layout_alignParentBottom="true"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:background="@color/forestGreen"
+        android:text="Charge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    
+</RelativeLayout>

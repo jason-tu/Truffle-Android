@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     tools:context=".TicketFragment">
 
     <android.support.v7.widget.RecyclerView
@@ -12,15 +13,35 @@
         android:layout_above="@+id/checkout"
         android:layout_alignParentTop="true" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="2dp"
+        android:layout_above="@+id/checkout"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnClearTicket"
+            android:textAllCaps="false"
+            android:text="Clear Ticket"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
     <Button
         android:id="@+id/checkout"
         style="@style/text.22"
-        android:layout_margin="2dp"
-        android:background="@android:color/holo_green_light"
+        android:background="@color/forestGreen"
+        android:textColor="@android:color/white"
         android:textAllCaps="false"
         android:text="@string/checkout"
+        android:textSize="38sp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

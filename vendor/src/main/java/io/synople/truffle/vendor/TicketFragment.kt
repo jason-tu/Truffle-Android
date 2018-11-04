@@ -6,8 +6,10 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import io.synople.truffle.vendor.adapter.RowItemAdapter
 import kotlinx.android.synthetic.main.fragment_ticket.*
+import java.text.NumberFormat
 
 
 class TicketFragment : Fragment() {
@@ -32,8 +34,31 @@ class TicketFragment : Fragment() {
         rvTicket.layoutManager = LinearLayoutManager(context)
 
         checkout.setOnClickListener {
-
+            fragmentManager!!.beginTransaction()
+                .replace(R.id.customersFrame, PaymentFragment.newInstance())
+                .commit()
         }
+
+        btnClearTicket.setOnClickListener {
+            ((activity as TicketActivity).ticketItems.clear())
+            adapter.notifyDataSetChanged()
+            checkout.text = "Checkout"
+
+            fragmentManager!!.beginTransaction()
+                .replace(R.id.customersFrame, CustomersFragment.newInstance()).commit()
+        }
+    }
+
+    fun addedItem() {
+        adapter.notifyItemInserted((activity as TicketActivity).ticketItems.size - 1)
+
+        // Update checkout amount
+        var ticketSum = 0f
+        ((activity as TicketActivity).ticketItems).forEach { ticket ->
+            ticketSum += ticket.price
+        }
+
+        checkout.text = "Checkout " + NumberFormat.getCurrencyInstance().format(ticketSum)
     }
 
     companion object {

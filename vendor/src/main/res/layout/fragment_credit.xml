@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreditFragment">
+
+    <TextView
+        android:id="@+id/tvCredit"
+        style="@style/text.28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="8dp"
+        android:text="Credit" />
+
+    <View
+        android:layout_width="match_parent"
+        android:background="@android:color/darker_gray"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_below="@+id/tvCredit"
+        android:layout_height="1dp" />
+
+    <TextView
+        android:id="@+id/balanceDue"
+        style="@style/text.72"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:layout_below="@+id/tvCredit"
+        android:textColor="@android:color/holo_green_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.stripe.android.view.CardMultilineWidget
+        android:id="@+id/card_multiline_widget"
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:shouldShowPostalCode="true" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        style="@style/text.18"
+        android:layout_alignParentBottom="true"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:background="@color/forestGreen"
+        android:text="Charge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
