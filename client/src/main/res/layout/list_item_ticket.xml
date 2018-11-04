@@ -28,7 +28,6 @@
         android:layout_width="167dp"
         android:text="Restaurant Name"
         android:layout_alignParentEnd="true"
-        android:layout_a="true"
 
         android:layout_alignParentTop="true"
         android:layout_marginTop="28dp"
