@@ -3,18 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ItemsFragment">
+    tools:context=".TicketFragment">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvItems"
+        android:id="@+id/rvTicket"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/rvCategories"
+        android:layout_above="@+id/checkout"
         android:layout_alignParentTop="true" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvCategories"
+    <Button
+        android:id="@+id/checkout"
+        android:text="Checkout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />
+
 </RelativeLayout>
