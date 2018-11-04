@@ -72,7 +72,7 @@ class CustomerViewFragment : Fragment() {
         tvCustomerName.setOnClickListener {
             thread(true) {
                 cameraKit.captureImage { _, photo ->
-                    FirebaseStorage.getInstance().reference.child(customer.id + ".jpg").getBytes(1024 * 1024)
+                    FirebaseStorage.getInstance().reference.child(customer.id + ".jpg").getBytes(1920 * 1080)
                         .addOnSuccessListener { referenceImage ->
                             val cameraImage =
                                 com.amazonaws.services.rekognition.model.Image()
