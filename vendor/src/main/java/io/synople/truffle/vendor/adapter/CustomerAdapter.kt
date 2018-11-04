@@ -1,19 +1,20 @@
 package io.synople.truffle.vendor.adapter
 
-import android.content.ClipData
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.stripe.android.model.Customer
+import io.synople.truffle.common.model.User
 import io.synople.truffle.vendor.R
 import kotlinx.android.synthetic.main.card_customer.view.*
 
 class CustomerAdapter(
-    private val items: MutableList<ClipData.Item>,
-    private val itemClick: (ClipData.Item) -> Unit
+    private val items: MutableList<User>,
+    private val itemClick: (User) -> Unit
 ): RecyclerView.Adapter<CustomerAdapter.ViewHolder>() {
-    class ViewHolder(private val v: View, private val itemClick: (ClipData.Item) -> Unit): RecyclerView.ViewHolder(v) {
-        fun bind(item: ClipData.item) {
+    class ViewHolder(private val v: View, private val itemClick: (User) -> Unit): RecyclerView.ViewHolder(v) {
+        fun bind(item: User) {
             v.tvCustomerName.text = item.name
 
             v.setOnClickListener {
