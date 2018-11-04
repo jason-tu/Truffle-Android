@@ -16,6 +16,7 @@
         android:layout_height="300dp"
         android:adjustViewBounds="true"
         android:keepScreenOn="true"
+        android:visibility="invisible"
         app:camera_facing="front"
         app:camera_focus="continuous"
         app:camera_permissions="camera" />

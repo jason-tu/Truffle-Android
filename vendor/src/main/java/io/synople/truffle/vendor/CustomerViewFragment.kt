@@ -61,7 +61,6 @@ class CustomerViewFragment : Fragment() {
         tvCustomerName.setOnClickListener {
             thread(true) {
                 cameraKit.captureImage { _, photo ->
-                    // TODO: Convert photo (byte[]) to image for Rekognition
                     val cameraImage = com.amazonaws.services.rekognition.model.Image().withBytes(ByteBuffer.wrap(photo))
 
                     val drawable = context!!.getDrawable(R.drawable.jason)
@@ -81,8 +80,10 @@ class CustomerViewFragment : Fragment() {
                                     context,
                                     "Similarity: ${matches.faceMatches.get(0).similarity}",
                                     Toast.LENGTH_SHORT
-                                )
-                                    .show()
+                                ).show()
+                            } else {
+                                Log.v("Result", "No face match")
+                                Toast.makeText(context, "No face match", Toast.LENGTH_SHORT).show()
                             }
                         }
                     }

@@ -11,7 +11,8 @@ import io.synople.truffle.common.model.Ticket
 import io.synople.truffle.common.model.User
 import io.synople.truffle.vendor.adapter.CustomerAdapter
 import kotlinx.android.synthetic.main.fragment_customer_list.*
-import java.util.*
+import com.google.firebase.firestore.FirebaseFirestore
+
 
 class CustomerListFragment : Fragment() {
 
@@ -31,22 +32,21 @@ class CustomerListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val items = mutableListOf<Item>()
-        items.add(Item(UUID.randomUUID().toString(), "Test Item", 1.5f))
+        // TODO: Populate customers
+        val docRef = FirebaseFirestore.getInstance().collection("users").document("T3ZwXPVjVseIZnHgr1Vw")
+        docRef.get().addOnSuccessListener { documentSnapshot ->
+            val cixin = documentSnapshot.toObject<User>(User::class.java)
 
-        val userOneTransactions = mutableListOf<Ticket>()
-        userOneTransactions.add(
-            Ticket(
-                UUID.randomUUID().toString(),
-                items,
-                "customerId",
-                "vendorId",
-                "Time",
-                1337.0
-            )
-        )
-        customers.add(User("1", "Cixin Liu", userOneTransactions))
-        customers.add(User("2", "Tyrone Reese", userOneTransactions))
+            val docRef2 = FirebaseFirestore.getInstance().collection("users").document("absCSuaFEhxFhcpzoHvr")
+            docRef2.get().addOnSuccessListener { documentSnapshot2 ->
+                val jason = documentSnapshot2.toObject<User>(User::class.java)
+
+                customers.add(cixin!!)
+                customers.add(jason!!)
+
+                activity!!.runOnUiThread { adapter.notifyDataSetChanged() }
+            }
+        }
 
         return inflater.inflate(R.layout.fragment_customer_list, container, false)
     }
