@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <ImageView
+            android:id="@+id/ivPhoto"
+            android:layout_width="175dp"
+            android:layout_height="229dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+    />
+
+    <TextView
+            android:id="@+id/tvVendor"
+            android:layout_height="33dp"
+            android:layout_width="167dp"
+            android:text="Restaurant Name"
+            android:layout_alignParentEnd="true"
+
+            android:layout_alignParentTop="true"
+            tools:layout_editor_absoluteY="242dp" tools:layout_editor_absoluteX="201dp"/>
+
+
+    <TextView
+            android:id="@+id/tvCost"
+            android:layout_height="33dp"
+            android:layout_width="167dp"
+            android:text="Total Cost"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            tools:layout_editor_absoluteY="398dp" tools:layout_editor_absoluteX="201dp"/>
+
+    <TextView
+            android:id="@+id/tvDate"
+            android:layout_height="33dp"
+            android:layout_width="167dp"
+            android:text="Date of Purchase"
+            android:layout_alignParentBottom="true"
+            tools:layout_editor_absoluteY="318dp" tools:layout_editor_absoluteX="201dp"/>
+
+</android.support.constraint.ConstraintLayout>
