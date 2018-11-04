@@ -1,9 +1,7 @@
 package io.synople.truffle.common.model;
 
 
-import java.sql.Time;
 import java.util.List;
-import java.util.UUID;
 
 public class Ticket {
 
@@ -21,7 +19,5 @@ public class Ticket {
         this.vendorId = vendorId;
         this.time = time;
         this.amount = amount;
-
     }
-
 }
