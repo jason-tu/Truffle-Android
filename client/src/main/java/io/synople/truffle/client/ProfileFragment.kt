@@ -54,7 +54,9 @@ class ProfileFragment : Fragment() {
             ).commit()
         }
 
-        tickets.addAll(user.transactions)
+        val temp = user.transactions
+        temp.reverse()
+        tickets.addAll(temp)
         adapter.notifyDataSetChanged()
 
         rvTransactionHistory.adapter = adapter

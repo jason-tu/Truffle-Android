@@ -60,7 +60,7 @@ class CustomerViewFragment : Fragment() {
         // Initialize the Amazon Cognito credentials provider
         val credentialsProvider = CognitoCachingCredentialsProvider(
             context,
-            "us-east-2:8ed36110-dc2f-4f5e-9d78-da2fc47c8dfc", // Identity pool ID
+            "[IDENTITY POOL ID]", // Identity pool ID
             Regions.US_EAST_2 // Region
         )
 
