@@ -1,1 +1,1 @@
-include ':vendor', ':client', ':models', ':TruffleCommon'
+include ':vendor', ':client', ':TruffleCommon'
