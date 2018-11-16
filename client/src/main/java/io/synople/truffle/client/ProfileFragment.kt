@@ -6,8 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import io.synople.truffle.client.adapter.TicketAdapter
+import io.synople.truffle.client.adapters.TicketAdapter
 import io.synople.truffle.common.model.Ticket
 import io.synople.truffle.common.model.User
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -18,36 +17,31 @@ private const val USER = "user"
 class ProfileFragment : Fragment() {
     private lateinit var user: User
 
-    val tickets: MutableList<Ticket> = mutableListOf()
-    val adapter: TicketAdapter by lazy {
-        TicketAdapter(tickets) { ticket ->
-            fragmentManager!!.beginTransaction()
-                .replace(
-                    R.id.fragmentFrame,
-                    TransactionHistoryFragment.newInstance(ticket)
-                ).commit()
-        }
-    }
+    private lateinit var tickets: MutableList<Ticket>
+    private lateinit var adapter: TicketAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            user = it.getParcelable(USER)
+            user = it.getParcelable(USER)!!
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_profile, container, false)
-    }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
+        inflater.inflate(R.layout.fragment_profile, container, false)!!
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        tickets = mutableListOf()
+        adapter = TicketAdapter(tickets) { ticket ->
+
+        }
+
         tvUserName.text = user.name
 
-        bScanFace.setOnClickListener {
+        btnFaceSecurity.setOnClickListener {
             fragmentManager!!.beginTransaction().replace(
                 R.id.fragmentFrame,
                 IDFaceFragment.newInstance(user)

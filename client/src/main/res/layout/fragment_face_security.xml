@@ -16,7 +16,7 @@
         app:camera_permissions="camera" />
 
     <Button
-        android:id="@+id/bCapturePhoto"
+        android:id="@+id/btnCapturePhoto"
         style="@style/text.22"
         android:text="Capture Photo!"
         android:layout_width="wrap_content"

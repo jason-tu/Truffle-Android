@@ -20,11 +20,10 @@ class CustomerActivity : FragmentActivity() {
 
         FirebaseApp.initializeApp(this)
 
-        user = intent.extras.getParcelable("user")!!
+        user = intent?.extras?.getParcelable("user")!!
         supportFragmentManager.beginTransaction().replace(
             R.id.fragmentFrame,
             ProfileFragment.newInstance(user)
         ).commit()
-        // absCSuaFEhxFhcpzoHvr
     }
 }

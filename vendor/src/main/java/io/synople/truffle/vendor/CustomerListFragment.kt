@@ -38,7 +38,7 @@ class CustomerListFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_customer_list, container, false)
     }
 
-    fun getCustomers() {
+    private fun getCustomers() {
         val docRef = FirebaseFirestore.getInstance().collection("users").document("T3ZwXPVjVseIZnHgr1Vw")
         docRef.get().addOnSuccessListener { documentSnapshot ->
             val cixin = documentSnapshot.toObject<User>(User::class.java)
@@ -51,10 +51,10 @@ class CustomerListFragment : Fragment() {
                 customers.add(cixin!!)
                 customers.add(jason!!)
 
-                activity!!.runOnUiThread {
-                    swipeRefresh.isRefreshing = false
-                    adapter.notifyDataSetChanged()
-                }
+//                activity!!.runOnUiThread {
+//                    swipeRefresh.isRefreshing = false
+//                    adapter.notifyDataSetChanged()
+//                }
             }
         }
     }

@@ -17,11 +17,11 @@ class CustomerAdapter(
     class ViewHolder(private val v: View, private val itemClick: (User) -> Unit) : RecyclerView.ViewHolder(v) {
         fun bind(item: User) {
 
-            FirebaseStorage.getInstance().reference.child(item.id + ".jpg").downloadUrl.addOnSuccessListener {
-                Glide.with(v.context)
-                    .load(it.toString())
-                    .into(v.ivCustomerImage)
-            }
+//            FirebaseStorage.getInstance().reference.child(item.id + ".jpg").downloadUrl.addOnSuccessListener {
+//                Glide.with(v.context)
+//                    .load(it.toString())
+//                    .into(v.ivCustomerImage)
+//            }
 
             v.tvCustomerName.text = item.name
 

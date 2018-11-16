@@ -1,23 +1,15 @@
 package io.synople.truffle.client
 
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
-import com.amazonaws.regions.Regions
-import com.amazonaws.auth.CognitoCachingCredentialsProvider
-import com.amazonaws.services.rekognition.AmazonRekognitionClient
 import com.google.firebase.storage.FirebaseStorage
 import io.synople.truffle.common.model.User
-import kotlinx.android.synthetic.main.fragment_face_id.*
-import java.io.ByteArrayOutputStream
-import java.nio.ByteBuffer
+import kotlinx.android.synthetic.main.fragment_face_security.*
 import kotlin.concurrent.thread
 
 
@@ -33,25 +25,20 @@ class IDFaceFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_face_id, container, false)
-    }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
+        inflater.inflate(R.layout.fragment_face_security, container, false)!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bCapturePhoto.setOnClickListener {
+        btnCapturePhoto.setOnClickListener {
             captureFace()
         }
 
         cameraKit.visibility = View.VISIBLE
-
     }
 
-    fun captureFace() {
+    private fun captureFace() {
         cameraKit.captureImage { _, photo ->
             thread(true) {
                 FirebaseStorage.getInstance().reference.child(profile.id + ".jpg").putBytes(photo)
@@ -102,5 +89,4 @@ class IDFaceFragment : Fragment() {
                 }
             }
     }
-
 }

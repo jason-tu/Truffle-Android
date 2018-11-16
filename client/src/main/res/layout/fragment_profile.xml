@@ -29,10 +29,10 @@
         android:layout_width="match_parent"
         android:layout_below="@+id/hr"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bScanFace" />
+        android:layout_above="@+id/btnFaceSecurity" />
 
     <Button
-        android:id="@+id/bScanFace"
+        android:id="@+id/btnFaceSecurity"
         style="@style/text.18"
         android:textAllCaps="false"
         android:layout_width="match_parent"
